@@ -35,9 +35,9 @@ enet_linked_version (void)
 }
            
 void *
-enet_malloc (size_t size)
+enet_malloc_raw (size_t size, const char* file, int line)
 {
-   void * memory = callbacks.malloc (size);
+   void * memory = callbacks.malloc (size, file, line);
 
    if (memory == NULL)
      callbacks.no_memory ();
@@ -46,8 +46,8 @@ enet_malloc (size_t size)
 }
 
 void
-enet_free (void * memory)
+enet_free_raw (void * memory, const char* file, int line)
 {
-   callbacks.free (memory);
+   callbacks.free (memory, file, line);
 }
 

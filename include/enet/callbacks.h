@@ -9,8 +9,8 @@
 
 typedef struct _ENetCallbacks
 {
-    void * (ENET_CALLBACK * malloc) (size_t size);
-    void (ENET_CALLBACK * free) (void * memory);
+    void * (ENET_CALLBACK * malloc) (size_t size, const char* file, int line);
+    void (ENET_CALLBACK * free) (void * memory, const char* file, int line);
     void (ENET_CALLBACK * no_memory) (void);
 } ENetCallbacks;
 
@@ -18,8 +18,8 @@ typedef struct _ENetCallbacks
     @{
     @ingroup private
 */
-extern void * enet_malloc (size_t);
-extern void   enet_free (void *);
+extern void * enet_malloc_raw (size_t, const char*, int);
+extern void   enet_free_raw (void *, const char*, int);
 
 /** @} */
 

@@ -440,6 +440,10 @@ typedef struct _ENetEvent
    ENetPacket *         packet;    /**< packet associated with the event, if appropriate */
 } ENetEvent;
 
+
+#define enet_malloc(s) enet_malloc_raw(s, __FILE__, __LINE__)
+#define enet_free(p) enet_free_raw(p, __FILE__, __LINE__)
+
 /** @defgroup global ENet global functions
     @{ 
 */
